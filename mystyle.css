@@ -1,0 +1,59 @@
+				body {
+				max-width:800px;
+				margin:auto;
+				
+				}
+				div.content {
+				height: 100%;
+				position: relative;
+				left:10px;	
+				color: rgb(60, 60, 60);
+				font-size: 12px;
+				}
+				#menu {
+				position:fixed;
+				top:0;
+				left:0;
+				border-style:solid;
+				width:100px;
+				list-style-type:none;
+				padding:0;
+				margin-top:5px;
+				background-color: blue;
+				
+				}
+				h1 {	
+				position:static;
+				top:10px;
+				font-size:48px;
+				text-align:center;
+				}
+				h2,h3,h4 {
+				font-size:150%;
+				text-align:left;
+				}
+				img {text-align:left;
+				width:20%;
+				}
+				.b {
+				position:relative; left:120px;
+				}
+				li.keuzemenu { 
+				border-style:solid;
+				margin:5px;
+				}
+				a {
+				color: white;
+				}
+				footer {
+				position: fixed;
+				right:0;
+				bottom:0;
+				background-color:black;
+				color:white;
+				font-size:10px;			
+				}
+				.NAW {
+				display: inline-block;
+				
+				}

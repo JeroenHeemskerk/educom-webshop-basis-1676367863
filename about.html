@@ -1,48 +1,24 @@
 <!DOCTYPE html>
 <html lang="NL">
 	<head>
+		<link rel="stylesheet" href="mystyle.css">
 		<title>About</title>
-		<style> <!-- deze sectie gebruik ik vooral om de opmaak van de pagina aan te passen, ik heb nog geen idee hoe ik de bullet lijst exclude van de opmaak dus voor nu krijgt alles apart een text-align:center -->
-			html,
-			body {
-			height:100%;
-			margin:0;
-			}
-			h1 {text-align:center;
-			font-size:300%;
-			}
-			h2 {text-align:center;
-			font-size:150%
-			}
-			h3 {text-align:center;
-			font-size:150%;
-			}
-			h4 {text-align:center;
-			font-size:150%;
-			}
-			img {text-align:center;
-			width:20%;
-			}
-			p {text-align:center;
-			}
-			footer {text-align:center;
-			}
-			ul.b {
-			position:relative; left:600px;
-			} <!-- ik heb meerdere oplossingen geprobeerd om de bulletpoints naar het midden te krijgen maar helaas is dat niet gelukt. vandaar dat ik deze ietswat minder schone oplossing heb gebruikt. -->
-		</style>	
-	</head>	
-		<body>
+		
 			<h1>Over mij</h1>
-				<ul class="a">
-					<li><a href="index.html" style="text-decoration: none">Home</a></li> <!-- hyperlink om terug naar de "Home" pagina te gaan -->
-					<li><a style="font-size:110%;">About</a></li> <!-- kleine opmaak om aan te geven dat ze zich nu op de "About" pagine bevinden -->
-					<li><a href="contact.html" style="text-decoration: none">Contact</a></li> <!-- hyperlink om naar de "Contact" pagina te gaan -->
-				</ul>
-			<h2>Wie ben ik?<br>	
+	</head>	
+		<body>	
+			<ul id="menu">
+					<li class="keuzemenu"><a href="index.html" style="text-decoration: none">Home</a></li> <!-- hyperlink om terug naar de "Home" pagina te gaan -->
+					<li class="keuzemenu"><a style="font-size:110%;">About</a></li> <!-- kleine opmaak om aan te geven dat ze zich nu op de "About" pagine bevinden -->
+					<li class="keuzemenu"><a href="contact.html" style="text-decoration: none">Contact</a></li> <!-- hyperlink om naar de "Contact" pagina te gaan -->
+			</ul>
+			<div class="content">
+		
+			
+			<h2>Wie ben ik?</h2><br>	
 				<img src="https://scontent-ams2-1.xx.fbcdn.net/v/t1.18169-9/13495263_10201912623452503_4187846889634265710_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Wvnzsy_sgS4AX-bsZnA&_nc_ht=scontent-ams2-1.xx&oh=00_AfBjF67bWEkG6PDAM_D6e3sz_67s5plYAnahBr6Qevw4sQ&oe=6416AE84" alt="Foto van Ruben">
 			<!-- Helaas een gigantische link moeten gebruiken omdat ik geen goede foto erbij kon krijgen. -->
-			</h2>
+			
 				<p> <!-- de eerste paragraaf zal ik gebruiken om een kleine introductie over mijn leven tot dus ver te geven. -->
 					<!-- ik heb vrij rap alles bij elkaar getikt, dus geen spelling/zinsopbouw controles gedaan. -->
 				Hallo, mijn naam is Ruben van der Zouw.<br>
@@ -107,7 +83,7 @@
 					<li>Koken</li>
 					<li>de Bourgondier uithangen met vrienden</li>
 				</ul>
-	
+				</div>
 				<hr>
 			<footer>&copy Created by Ruben van der Zouw 2023</footer>				
 		</body>

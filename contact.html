@@ -1,68 +1,58 @@
 <!DOCTYPE html>
 <html lang="NL"> <!-- ik heb bij deze pagina vooralsnog maar even geen poging gedaan om alles gecentreerd te krijgen -->
-	<head>
-		<title>Contact</title> <!-- wederom een klein beetje styling -->
-			<style>
-			html,
-			body {
-			height:100%;
-			margin:0;
-			}
-			h1 {
-			font-size:300%;
-			text-align:center;
-			}
-			h2 {
-			font-size:150%;
-			}
-			footer {
-			text-align:center;
-			}					
-			</style>
-	</head>
-		<body>
-			<h1>Contact</h1> <!-- in ieder geval deze knoppen op de zelfde plekken houden door de hele website heen -->
-				<ul class"a">
-					<li><a href="index.html" style="text-decoration: none">Home</a></li>
-					<li><a href="about.html" style="text-decoration: none">About</a></li>
-					<li><a style="font-size:110%;">Contact</a></li>
-				</ul>
-			<h2>Contact opnemen?</h2>
-				<form action="index.html" method="post"> <!-- het idee wat ik had was alles onder 1 form te doen zodat het als 1 gegeven verstuurd kan worden. -->
-														 <!-- In het voorbeeld op W3schools hebben ze het over /action.php/ maar aangezien ik nog geen soort gelijk document hebt stuur ik ze terug naar de homepage.-->
-														 <!-- bij deze instantie leek het mij beter om de method "post" te gebruiken omdat de textarea gevoelige gegevens kan bevatten. -->
-					<label for="Aanhef">Aanhef:</label>
-				<br>
-						<select id="aanhef" name="aanhef"> <!-- opties voor beide geslachten -->
-							<option value="Dhr">Dhr</option>
-							<option value="Mvr">Mvr</option>
-						</select>
-				<br>
-					<label for="Name">Naam:</label><br> <!-- kopje waar men hun naam kan invullen -->
-						<input type="text" id="Name" name="Name"><br>
-					<label for="email">E-mail:</label><br> <!-- kopje waar men hun email kan invullen -->
-						<input type="text" id="email" name="email"><br>
-					<label for="telefoon">Telefoonnummer:</label><br> <!-- kopje waar men hun Telefoonnummer kan invullen -->
-						<input type="text" id="telefoon" name="telefoon"><br>
-				<br>
-				
-					<label for="contact">Hoe wilt u gecontacteerd worden:</label> <!-- In de opdracht stond 'communicatievoorkeur, maar ik vond dit wat netter staan -->
-				<br>
-				<br>
-				    <input type="radio" id="nummer" name="fav_contact" value="nummer"> <!-- de radio buttons met opties telefoon nummer & email -->
-					<label for="nummer">Telefoonnummer:</label><br>
-					<input type="radio" id="email" name="fav_contact" value="email">
-					<label for="email">E-mail</label>
-				<br>
-				<br>
-					<label for="waarover">Beschrijf in het kort waar u contact over wilt opnemen:</label> <!-- textarea waar men kort en bondig kan opschrijven waarover ze contact willen hebben -->
-				<br>
-				<br>
-						<textarea name="message" rows="10" cols="50" maxlength="250"></textarea> <!-- ik heb gelijkt een maximum aantal characters toegevoegd zodat er geen gigantische verhalen verstuurd worden -->
-				<br>
-				<br>
-						<input type="submit" value="Versturen">
-				</form>
-			<footer>&copy Created by Ruben van der Zouw 2023</footer>	<!-- Uiteraard nog een keer de copyright -->
-		</body>
+    <head>
+        <link rel="stylesheet" href="mystyle.css">
+        <title>Contact</title> <!-- wederom een klein beetje styling -->
+                    <h1>Contact</h1> <!-- in ieder geval deze knoppen op de zelfde plekken houden door de hele website heen -->
+        
+    </head>
+        <body>
+                <ul id="menu">
+                    <li class="keuzemenu"><a href="index.html" style="text-decoration: none">Home</a></li>
+                    <li class="keuzemenu"><a href="about.html" style="text-decoration: none">About</a></li>
+                    <li class="keuzemenu"><a style="font-size:110%;">Contact</a></li>
+                </ul>           
+            <div class="content">
+                
+            <h2>Contact opnemen?</h2>
+                <form action="index.html" method="post"> <!-- het idee wat ik had was alles onder 1 form te doen zodat het als 1 gegeven verstuurd kan worden. -->
+                                                         <!-- In het voorbeeld op W3schools hebben ze het over /action.php/ maar aangezien ik nog geen soort gelijk document hebt stuur ik ze terug naar de homepage.-->
+                                                         <!-- bij deze instantie leek het mij beter om de method "post" te gebruiken omdat de textarea gevoelige gegevens kan bevatten. -->
+                    <label for="Aanhef">Aanhef:</label>
+                <br>
+                        <select id="aanhef" name="aanhef"> <!-- opties voor beide geslachten -->
+                            <option value="Dhr">Dhr</option>
+                            <option value="Mvr">Mvr</option>
+                        </select>
+                <br>
+                    <label class="NAW" for="Name">Naam:</label><!-- kopje waar men hun naam kan invullen -->
+                        <input type="text" id="Name" name="Name"><br>   
+                    <label class="NAW"for="email">E-mail:</label> <!-- kopje waar men hun email kan invullen -->
+                        <input type="text" id="email" name="email"><br>
+                        
+                    <label class="NAW" for="telefoon">Telefoonnummer:</label> <!-- kopje waar men hun Telefoonnummer kan invullen -->
+                        <input type="text" id="telefoon" name="telefoon"><br>
+                    
+                <br>
+                <br>
+                    <label for="contact">Hoe wilt u gecontacteerd worden:</label> <!-- In de opdracht stond 'communicatievoorkeur, maar ik vond dit wat netter staan -->
+                <br>
+                <br>
+                    <input type="radio" id="nummer" name="fav_contact" value="nummer"> <!-- de radio buttons met opties telefoon nummer & email -->
+                    <label for="nummer">Telefoonnummer:</label><br>
+                    <input type="radio" id="mailradio" name="fav_contact" value="email"> <!-- id veranderd naar mailradio omdat de id email al voorkomt. -->
+                    <label for="mailradio">E-mail</label>
+                <br>
+                <br>
+                    <label for="waarover">Beschrijf in het kort waar u contact over wilt opnemen:</label> <!-- textarea waar men kort en bondig kan opschrijven waarover ze contact willen hebben -->
+                <br>
+                <br>
+                        <textarea name="message" rows="10" cols="50" maxlength="250"></textarea> <!-- ik heb gelijkt een maximum aantal characters toegevoegd zodat er geen gigantische verhalen verstuurd worden -->
+                <br>
+                <br>
+                        <input type="submit" value="Versturen">
+                </form>
+            </div>
+            <footer>&copy Created by Ruben van der Zouw 2023</footer>   <!-- Uiteraard nog een keer de copyright -->
+        </body>
 </html>
