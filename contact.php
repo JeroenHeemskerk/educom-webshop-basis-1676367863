@@ -10,12 +10,13 @@
                 <ul id="menu">
                     <li id="keuzemenu"><a href="index.html" class="inactive">Home</a></li>
                     <li id="keuzemenu"><a href="about.html" class="inactive">About</a></li>
-                    <li id="keuzemenu"><a href="contact.html" class="active">Contact</li>
-                </ul>           
+                    <li id="keuzemenu"><a href="contact.php" class="active">Contact</li>
+                </ul> 
             <div class="content">
                 
             <h2>Contact opnemen?</h2>
-                <form action="index.html" method="post"> <!-- het idee wat ik had was alles onder 1 form te doen zodat het als 1 gegeven verstuurd kan worden. -->
+            <?php if (!$valid) { /* show the next part only when $valid is false$ */ } ?>
+                <form  method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"> <!--t idee wat ik had was alles onder 1 form te doen zodat het als 1 gegeven verstuurd kan worden. -->
                                                          <!-- In het voorbeeld op W3schools hebben ze het over /action.php/ maar aangezien ik nog geen soort gelijk document hebt stuur ik ze terug naar de homepage.-->
                                                          <!-- bij deze instantie leek het mij beter om de method "post" te gebruiken omdat de textarea gevoelige gegevens kan bevatten. -->
                     <label for="Aanhef">Aanhef:</label>
