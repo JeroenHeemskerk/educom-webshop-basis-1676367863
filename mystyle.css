@@ -62,3 +62,6 @@
 				textarea { /* om de breedte van de textarea aan te passen */
 					width:400px;
 				}
+				span.error {
+					color:red;
+				}
