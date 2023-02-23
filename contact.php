@@ -30,6 +30,7 @@ $valid = false;
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $aanhef=test_input($_POST["aanhef"]);
     if (empty($_POST["name"])) {
         $nameErr="* Vul uw naam in";
     } else { 
@@ -105,9 +106,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <span class="error"><?php echo $favcontactErr; ?></span>
                     <br>
                 <br>
-                    <input type="radio" id="favcontactphone" name="favcontact" value="per Telefoon"> <!-- de radio buttons met opties telefoon nummer & email -->
+                    <input type="radio" id="favcontactphone" name="favcontact" value="per Telefoon" <?php echo($favcontact =='per Telefoon')?'checked':''?>> <!-- de radio buttons met opties telefoon nummer & email -->
                         <label for="per telefoon">Telefoon</label><br>
-                    <input type="radio" id="favcontactmail" name="favcontact" value="per Email" checked> <!-- id veranderd naar mailradio omdat de id email al voorkomt. -->
+                    <input type="radio" id="favcontactmail" name="favcontact" value="per Email" <?php echo($favcontact =='per Email')?'checked':''?>> <!-- id veranderd naar mailradio omdat de id email al voorkomt. -->
                         <label for="mailradio">E-mail</label>
                 <br>
                 <br>
@@ -132,6 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <br>
                 Uw gegevens zijn als volgt:<br></p>
                 <?php
+                echo $aanhef. ' ' ; 
                 echo $name; ?><br>
                 <?php
                 echo $email; ?><br>
