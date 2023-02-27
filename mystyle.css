@@ -19,7 +19,6 @@
 				padding:0;
 				margin-top:5px; /* zodat elke "knop" er wat beter uit ziet*/
 				background-color: blue; /* blauwe achtergrond */
-				
 				}
 				h1 {	/* hiermee bepaal ik de positie en de grootte van de header */
 				position:static; 
@@ -34,12 +33,13 @@
 				img {text-align:left; /* hiermee pas ik de positie en grootte van de afbeelding aan */
 				width:20%;
 				}	
-				#keuzemenu { /* om de list optie van het menu ook een aparte border te geven */
+				#menu li { /* om de list optie van het menu ook een aparte border te geven */
 				border-style:solid;
 				margin:5px;
 				}
 				a { /* Zodat de links in het menu wit blijven */
 					color:white;
+					text-decoration: none;
 				}
 				footer { /* voor de positie en grootte copyright */
 				position: fixed;
@@ -51,9 +51,6 @@
 				}
 				.active {    
 					font-size:18px;	/* hiermee pas ik de font-size aan zodat het duidelijker te zien is op welke pagina je op dat moment bent */
-					text-decoration: none; /* voor het verwijderen van de underline van de links */
-				}
-				.inactive {
 					text-decoration: none; /* voor het verwijderen van de underline van de links */
 				}
 				input[type="text"] { /* om de breedte van de input velden aan te passen */

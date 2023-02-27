@@ -12,9 +12,9 @@
 		<body>
 			
 			<ul id="menu">
-					<li id="keuzemenu"><a href="index.html" class="active">Home</li> <!-- om duidelijk aan te geven dat ze zich op desbetreffende pagina bevinden heb ik het font iets vergroot -->
-					<li id="keuzemenu"><a href="about.html" class="inactive">About</a></li> <!-- persoonlijk vind ik het wat sierlijker om de underline weg te laten bij knoppen. het ideale zou zijn om de underline alleen te laten zien op het moment dat ze hun muis erover bewegen -->
-					<li id="keuzemenu"><a href="contact.php" class="inactive">Contact</a></li> <!-- zelfde als de regel hier boven -->
+					<li><a href="index.php" class="active">Home</li> <!-- om duidelijk aan te geven dat ze zich op desbetreffende pagina bevinden heb ik het font iets vergroot -->
+					<li><a href="about.php">About</a></li> <!-- persoonlijk vind ik het wat sierlijker om de underline weg te laten bij knoppen. het ideale zou zijn om de underline alleen te laten zien op het moment dat ze hun muis erover bewegen -->
+					<li><a href="contact.php">Contact</a></li> <!-- zelfde als de regel hier boven -->
 			</ul>
 			
 			<div class="content">	

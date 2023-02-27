@@ -9,29 +9,27 @@
         <body>
             
                 <ul id="menu">
-                    <li id="keuzemenu"><a href="index.html" class="inactive">Home</a></li>
-                    <li id="keuzemenu"><a href="about.html" class="inactive">About</a></li>
-                    <li id="keuzemenu"><a href="contact.php" class="active">Contact</a></li>
+                    <li><a href="home.php">Home</a></li>
+                    <li><a href="about.php">About</a></li>
+                    <li><a href="contact.php" class="active">Contact</a></li>
                 </ul>
 <div class="content">
       <h2>Contact opnemen?</h2>
 <?php  
 
-function debug_to_console($data) {
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
-    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
-  }
  
-$nameErr = $emailErr = $telefoonErr = $favcontactErr = $commentErr = "";
-$aanhef = $name = $email = $telefoon = $favcontact = $comment = "";
+$titleErr = $nameErr = $emailErr = $telefoonErr = $favcontactErr = $commentErr = "";
+$title = $name = $email = $telefoon = $favcontact = $comment = "";
 $valid = false;
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $aanhef=test_input($_POST["aanhef"]);
-    if (empty($_POST["name"])) {
+    if  ($_POST["title"] == "noneselected") {
+        $titleErr="* Selecteer aanhef"; 
+    } else {
+        $aanhef=test_input($_POST["title"]);
+        }
+    if  (empty($_POST["name"])) {
         $nameErr="* Vul uw naam in";
     } else { 
         $name=test_input($_POST["name"]);
@@ -46,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     if (empty($_POST["telefoon"])) {
-        $telefoonErr="* Vul uw telefoonnummer";
+        $telefoonErr="* Vul uw telefoonnummer in";
     }
     else  { 
         $telefoon=test_input($_POST["telefoon"]); 
@@ -66,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $comment=test_input($_POST["comment"]); 
     }
     
-    if ( $nameErr === "" && $emailErr === "" && $telefoonErr === "" && $favcontactErr === "" &&  $commentErr === "" ) {
+    if ( $titleErr === "" && $nameErr === "" && $emailErr === "" && $telefoonErr === "" && $favcontactErr === "" &&  $commentErr === "" ) {
    $valid = true; }
         
 }
@@ -81,14 +79,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
     <section>
     <?php if (!$valid) { ?>
-                <form  method="post" action="contact.php"> <!-- idee wat ik had was alles onder 1 form te doen zodat het als 1 gegeven verstuurd kan worden. -->
-                                                         <!-- In het voorbeeld op W3schools hebben ze het over /action.php/ maar aangezien ik nog geen soort gelijk document hebt stuur ik ze terug naar de homepage.-->
-                                                         <!-- bij deze instantie leek het mij beter om de method "post" te gebruiken omdat de textarea gevoelige gegevens kan bevatten. -->
-                    <label for="Aanhef">Aanhef:</label>
-                        <select id="aanhef" name="aanhef"> <!-- opties voor beide geslachten -->
-                            <option value="Dhr">Dhr</option>
-                            <option value="Mvr">Mvr</option>
+                <form  method="post" action="contact.php"> <!-- contact form -->
+                                                         
+                    <label for="title">Aanhef:</label>
+                        <select id="title" name="title"> <!-- options for title -->
+                            <option id="none" value="noneselected">Selecteer een optie</option>
+                            <option id="male" value="Dhr"<?php echo (isset($_POST['title']) && $_POST['title'] == 'Dhr') ? ' selected="selected"' : '' ; ?>>Dhr</option>
+                            <option id="female" value="Mvr"<?php echo (isset($_POST['title']) && $_POST['title'] == 'Mvr') ? ' selected="selected"' : '' ; ?>>Mvr</option>
+                            <option id="else" value="Anders"<?php echo (isset($_POST['title']) && $_POST['title'] == 'Anders') ? ' selected="selected"' : '' ; ?>>Anders</option>
                         </select>
+                        <span class="error"><?php echo $titleErr; ?></span>
+                        
                 <br>
                     <label class="NAW" for="name">Naam:</label><!-- kopje waar men hun naam kan invullen -->
                         <input type="text" name="name" id="name" value="<?php echo $name;?>">
@@ -133,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <br>
                 Uw gegevens zijn als volgt:<br></p>
                 <?php
-                echo $aanhef. ' ' ; 
+                echo $title. ' '; 
                 echo $name; ?><br>
                 <?php
                 echo $email; ?><br>
