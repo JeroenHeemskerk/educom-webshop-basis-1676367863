@@ -20,6 +20,7 @@
 
 
 define('TITLE_OPTIONS', array("dhr" => 'Dhr', "mvr" =>  'Mvr', "OTHER" => 'Anders')); 
+define('CONTACT_OPTIONS', array("telefoon" => 'per Telefoon', "mail" => 'per E-mail'));
 
 $titleErr = $nameErr = $emailErr = $telefoonErr = $favcontactErr = $commentErr = "";
 $title = $name = $email = $telefoon = $favcontact = $comment = "";
@@ -60,7 +61,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {  //set conditions
         $favcontactErr="* Selecteer een contact optie";
     }   
     else { 
-        $favcontact=test_input($_POST["favcontact"]); 
+        $favcontact=test_input($_POST["favcontact"]);
+        if (!array_key_exists($favcontact, CONTACT_OPTIONS)) {
+            $favcontactErr = "Onbekende contactoptie";
+        } 
     }
     
     if (empty($_POST["comment"])) {
@@ -108,18 +112,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {  //set conditions
                         <span class="error"><?php echo $emailErr; ?></span><br>
                     <label class="NAW" for="telephone">Telefoonnummer:</label> <!-- kopje waar men hun Telefoonnummer kan invullen -->
                         <input type="text" name="telefoon" id="telefoonnummer" value="<?php echo $telefoon;?>">
-                        <span class="error"><?php echo $telefoonErr; ?></span><br>   
-                    
-                <br>
-                <br>
+                        <span class="error"><?php echo $telefoonErr; ?></span><br><br><br>   
+                
+                              
                     <label for="contact">Hoe wilt u gecontacteerd worden:</label> <!-- In de opdracht stond communicatievoorkeur, maar ik vond dit wat netter staan -->
                     <span class="error"><?php echo $favcontactErr; ?></span>
                     <br>
-                <br>
-                    <input type="radio" id="favcontactphone" name="favcontact" value="per Telefoon" <?php echo($favcontact =='per Telefoon')?'checked':''?>> <!-- de radio buttons met opties telefoon nummer & email -->
-                        <label for="per telefoon">Telefoon</label><br>
-                    <input type="radio" id="favcontactmail" name="favcontact" value="per Email" <?php echo($favcontact =='per Email')?'checked':''?>> <!-- id veranderd naar mailradio omdat de id email al voorkomt. -->
-                        <label for="mailradio">E-mail</label>
+                    <br>
+                <?php
+                    foreach(CONTACT_OPTIONS as $key => $contact)
+                    {
+                    echo "<input type='radio' name='favcontact' value='$key' " . ($favcontact == $key ? "checked" : "") ." >". // de radio buttons met opties telefoon nummer & email
+                        "<label for='$key'>$contact</label><br>"; 
+                    }
+                ?>    
                 <br>
                 <br>
                     <label for="comment">Beschrijf in het kort waar u contact over wilt opnemen:</label> <!-- textarea waar men kort en bondig kan opschrijven waarover ze contact willen hebben -->
