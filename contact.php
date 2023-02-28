@@ -1,34 +1,40 @@
 <!DOCTYPE html>
-<html lang="NL"> <!-- ik heb bij deze pagina vooralsnog maar even geen poging gedaan om alles gecentreerd te krijgen -->
+<html lang="NL"> <!-- page language -->
     <head>
-        <link rel="stylesheet" href="mystyle.css">
-        <title>Contact</title> <!-- wederom een klein beetje styling -->
-                    <h1>Contact</h1> <!-- in ieder geval deze knoppen op de zelfde plekken houden door de hele website heen -->
+        <link rel="stylesheet" href="mystyle.css"> <!-- style document -->
+        <title>Contact</title> <!-- titel van pagina -->
+                    <h1>Contact</h1> <!-- header van pagina -->
         
     </head>
         <body>
             
-                <ul id="menu">
+                <ul id="menu"> <!-- menu -->
                     <li><a href="home.php">Home</a></li>
                     <li><a href="about.php">About</a></li>
                     <li><a href="contact.php" class="active">Contact</a></li>
                 </ul>
 <div class="content">
-      <h2>Contact opnemen?</h2>
-<?php  
+      <h2>Contact opnemen?</h2> <!-- Titel van de contact form-->
+<?php
 
- 
+
+
+define('TITLE_OPTIONS', array("dhr" => 'Dhr', "mvr" =>  'Mvr', "OTHER" => 'Anders')); 
+
 $titleErr = $nameErr = $emailErr = $telefoonErr = $favcontactErr = $commentErr = "";
 $title = $name = $email = $telefoon = $favcontact = $comment = "";
-$valid = false;
+$valid = false; // declaring variables
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if  ($_POST["title"] == "noneselected") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {  //set conditions
+    if  ($_POST["title"] == "") {
         $titleErr="* Selecteer aanhef"; 
     } else {
-        $aanhef=test_input($_POST["title"]);
+        $title=test_input($_POST["title"]);
+        if (!array_key_exists($title, TITLE_OPTIONS)) {
+            $titleErr = "Onbekende aanhef.";
         }
+    }
     if  (empty($_POST["name"])) {
         $nameErr="* Vul uw naam in";
     } else { 
@@ -82,15 +88,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <form  method="post" action="contact.php"> <!-- contact form -->
                                                          
                     <label for="title">Aanhef:</label>
-                        <select id="title" name="title"> <!-- options for title -->
-                            <option id="none" value="noneselected">Selecteer een optie</option>
-                            <option id="male" value="Dhr"<?php echo (isset($_POST['title']) && $_POST['title'] == 'Dhr') ? ' selected="selected"' : '' ; ?>>Dhr</option>
-                            <option id="female" value="Mvr"<?php echo (isset($_POST['title']) && $_POST['title'] == 'Mvr') ? ' selected="selected"' : '' ; ?>>Mvr</option>
-                            <option id="else" value="Anders"<?php echo (isset($_POST['title']) && $_POST['title'] == 'Anders') ? ' selected="selected"' : '' ; ?>>Anders</option>
-                        </select>
-                        <span class="error"><?php echo $titleErr; ?></span>
-                        
-                <br>
+                            <?php 
+                                
+                                echo "<select name='title'>";
+                                echo "<option value=''>Selecteer een optie</option>";
+
+                                foreach(TITLE_OPTIONS as $key => $label)
+                                {
+                                echo "<option value=$key " . ($title == $key ? "selected" : "") . ">$label</option>";
+                                }
+                                echo "</select>"
+                            ?>
+                            <span class="error"><?php echo $titleErr; ?></span><br>
                     <label class="NAW" for="name">Naam:</label><!-- kopje waar men hun naam kan invullen -->
                         <input type="text" name="name" id="name" value="<?php echo $name;?>">
                         <span class="error"><?php echo $nameErr; ?></span><br>

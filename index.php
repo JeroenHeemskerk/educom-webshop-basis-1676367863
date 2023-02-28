@@ -23,8 +23,8 @@
         
         function showMenu ();
             $pages = ['home', 'about', 'contact'];
-                echo '<ul class="menu">
-                    <li id="keuzemenu"><a href="home.php" class="active">Home</li> 
-                    <li id="keuzemenu"><a href="about.php" class="inactive">About</a></li>
-                    <li id="keuzemenu"><a href="contact.php" class="inactive">Contact</a></li>
+                echo '<ul id="menu">
+                    <li><a href="home.php">Home</a></li> 
+                    <li><a href="about.php">About</a></li>
+                    <li"><a href="contact.php">Contact</a></li>
                     </ul>'
