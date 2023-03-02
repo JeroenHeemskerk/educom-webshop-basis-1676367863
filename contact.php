@@ -1,24 +1,20 @@
-<!DOCTYPE html>
-<html lang="NL"> <!-- page language -->
-    <head>
-        <link rel="stylesheet" href="mystyle.css"> <!-- style document -->
-        <title>Contact</title> <!-- titel van pagina -->
-                    <h1>Contact</h1> <!-- header van pagina -->
-        
-    </head>
-        <body>
-            
-                <ul id="menu"> <!-- menu -->
-                    <li><a href="home.php">Home</a></li>
-                    <li><a href="about.php">About</a></li>
-                    <li><a href="contact.php" class="active">Contact</a></li>
-                </ul>
-<div class="content">
-      <h2>Contact opnemen?</h2> <!-- Titel van de contact form-->
 <?php
-
-
-
+    function showContactHead()
+        {
+            echo "Contact";
+        } 
+    function showContactHeader()
+        {
+            echo '<h1>Contact</h1>';
+        }
+    function showContactContent() 
+        {
+            echo '<div class="content">
+            <h2>Contact opnemen?</h2>';
+        }
+    function validateContact()
+    {
+    
 define('TITLE_OPTIONS', array("dhr" => 'Dhr', "mvr" =>  'Mvr', "OTHER" => 'Anders')); 
 define('CONTACT_OPTIONS', array("telefoon" => 'per Telefoon', "mail" => 'per E-mail'));
 
@@ -77,32 +73,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {  //set conditions
     if ( $titleErr === "" && $nameErr === "" && $emailErr === "" && $telefoonErr === "" && $favcontactErr === "" &&  $commentErr === "" ) {
    $valid = true; }
         
+    }
 }
-     
     function test_input($data) {
         $data = trim($data);
         $data = htmlspecialchars($data);
         return $data;
         }               
       
+    
 
-?>
-    <section>
+/*
     <?php if (!$valid) { ?>
-                <form  method="post" action="contact.php"> <!-- contact form -->
-                                                         
-                    <label for="title">Aanhef:</label>
-                            <?php 
-                                
-                                echo "<select name='title'>";
-                                echo "<option value=''>Selecteer een optie</option>";
-
+        <form  method='post' action='contact.php'> <!-- contact form -->
+                <label for='title'>Aanhef:</label>
+                    <select name='title'>
+                    <option value=''>Selecteer een optie</option>
+                            <?php
                                 foreach(TITLE_OPTIONS as $key => $label)
                                 {
                                 echo "<option value=$key " . ($title == $key ? "selected" : "") . ">$label</option>";
                                 }
                                 echo "</select>"
-                            ?>
+                                ?>
                             <span class="error"><?php echo $titleErr; ?></span><br>
                     <label class="NAW" for="name">Naam:</label><!-- kopje waar men hun naam kan invullen -->
                         <input type="text" name="name" id="name" value="<?php echo $name;?>">
@@ -143,12 +136,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {  //set conditions
           
                 
                 
-                 } else { ?>
-                <p>Bedankt voor uw bericht, <?php echo $name; ?>.<br>
-                Wij zullen spoedig contact opnemen <?php echo $favcontact ?>.<br>
-                <br>
-                Uw gegevens zijn als volgt:<br></p>
-                <?php
+                 } else { 
+                echo '<p>Bedankt voor uw bericht, <?php echo $name; ?>.<br>
+                            Wij zullen spoedig contact opnemen <?php echo $favcontact ?>.<br>
+                            <br>
+                            Uw gegevens zijn als volgt:<br>
+                    </p>';
+                 }
                 echo $title. ' '; 
                 echo $name; ?><br>
                 <?php
@@ -156,11 +150,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {  //set conditions
                 <?php
                 echo $telefoon;
                 ?>
-                <?php } 
-                 ?>
-</section>
-
-            </div>
-            <footer>&copy Created by Ruben van der Zouw 2023</footer>
-        </body>
-</html>
+                 
+    echo '</div>';
+    */
