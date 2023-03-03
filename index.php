@@ -2,14 +2,21 @@
     
     $page = getRequestedPage();
     showResponsePage($page);
- 
 
+        function getPostVar($key, $default = '') {
+            return isset($_POST[$key]) ? $_POST[$key] : $default;
+        }
+        function getUrlVar($key, $default = '') {
+            return isset($_GET[$key]) ? $_GET[$key] : $default;
+        }
+  
+        
         function getRequestedPage()
         {
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                return $_POST["page"];
-            } else {
-                return (isset($_GET["page"]) ? $_GET["page"] : 'home');
+            if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+                return getPostVar("page", "home"); 
+            } else { 
+                return getUrlVar("page", "home"); 
             }
         }
         function showResponsePage($page)
@@ -76,6 +83,10 @@
                         case 'contact':
                             require_once('contact.php');
                             showContactHeader();
+                            break;
+                        case 'thanks' :
+                            require_once('contact.php');
+                            showContactHeader();
                             break;  
                 }     
              }
@@ -106,6 +117,7 @@
                         case 'contact':
                             require_once('contact.php');
                             showContactContent();
+                            showContactForm();
                             break;
                         default:
                         echo "ERROR, Page not found";  
@@ -124,3 +136,4 @@
             echo "</div>
             </html>";
         }
+?>        

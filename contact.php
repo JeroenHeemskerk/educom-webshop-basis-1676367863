@@ -12,8 +12,7 @@
             echo '<div class="content">
             <h2>Contact opnemen?</h2>';
         }
-    function validateContact()
-    {
+   
     
 define('TITLE_OPTIONS', array("dhr" => 'Dhr', "mvr" =>  'Mvr', "OTHER" => 'Anders')); 
 define('CONTACT_OPTIONS', array("telefoon" => 'per Telefoon', "mail" => 'per E-mail'));
@@ -22,58 +21,67 @@ $titleErr = $nameErr = $emailErr = $telefoonErr = $favcontactErr = $commentErr =
 $title = $name = $email = $telefoon = $favcontact = $comment = "";
 $valid = false; // declaring variables
 
+function validateContact()
+{
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {  //set conditions
-    if  ($_POST["title"] == "") {
+    if  (($title) == "") {
         $titleErr="* Selecteer aanhef"; 
     } else {
-        $title=test_input($_POST["title"]);
+        $title=test_input(getPostVar(["title"]));
         if (!array_key_exists($title, TITLE_OPTIONS)) {
             $titleErr = "Onbekende aanhef.";
         }
     }
-    if  (empty($_POST["name"])) {
+    if  (empty($name)) {
         $nameErr="* Vul uw naam in";
     } else { 
-        $name=test_input($_POST["name"]);
+        $name=test_input(getPostVar("name"));
+    } if  (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
+        $nameErr = "Alleen letters en spaties zijn toegestaan.";
     }
 
-    if (empty($_POST["email"])) {
+
+    if (empty($email)) {
         $emailErr ="* Vul een mailadres in";
     } else { 
-        $email=test_input($_POST["email"]);
+        $email=test_input(getPostVar("email"));
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $emailErr="* Vul een geldig emailadres in";
         }
     }
-    if (empty($_POST["telefoon"])) {
+    if (empty($telefoon)) {
         $telefoonErr="* Vul uw telefoonnummer in";
     }
     else  { 
-        $telefoon=test_input($_POST["telefoon"]); 
+        $telefoon=test_input(getPostVar("telefoon")); 
     } 
     
-    if (empty($_POST["favcontact"])) {
+    if (empty($favcontact)) {
         $favcontactErr="* Selecteer een contact optie";
     }   
     else { 
-        $favcontact=test_input($_POST["favcontact"]);
+        $favcontact=test_input(getPostVar("favcontact"));
         if (!array_key_exists($favcontact, CONTACT_OPTIONS)) {
             $favcontactErr = "Onbekende contactoptie";
         } 
     }
     
-    if (empty($_POST["comment"])) {
+    if (empty($comment)) {
         $commentErr="* Vul uw reden voor contact in";
     }
     else { 
-        $comment=test_input($_POST["comment"]); 
+        $comment=test_input(getPostVar("comment")); 
     }
     
     if ( $titleErr === "" && $nameErr === "" && $emailErr === "" && $telefoonErr === "" && $favcontactErr === "" &&  $commentErr === "" ) {
    $valid = true; }
         
     }
+    return array("title" => $title, "name" => $name, "email" => $email, "telefoon" => $telefoon,
+    "favcontact" => $favcontact, "comment" => $comment, "titleErr" => $titleErr,
+    "nameErr" => $nameErr, "emailErr" => $emailErr, "telefoonErr" => $telefoonErr,
+    "favcontactErr" => $favcontactErr, "valid" => $valid);
 }
     function test_input($data) {
         $data = trim($data);
@@ -83,73 +91,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {  //set conditions
       
     
 
-/*
-    <?php if (!$valid) { ?>
-        <form  method='post' action='contact.php'> <!-- contact form -->
-                <label for='title'>Aanhef:</label>
-                    <select name='title'>
-                    <option value=''>Selecteer een optie</option>
-                            <?php
-                                foreach(TITLE_OPTIONS as $key => $label)
-                                {
-                                echo "<option value=$key " . ($title == $key ? "selected" : "") . ">$label</option>";
-                                }
-                                echo "</select>"
-                                ?>
-                            <span class="error"><?php echo $titleErr; ?></span><br>
-                    <label class="NAW" for="name">Naam:</label><!-- kopje waar men hun naam kan invullen -->
-                        <input type="text" name="name" id="name" value="<?php echo $name;?>">
-                        <span class="error"><?php echo $nameErr; ?></span><br>
-                    <label class="NAW"for="email">E-mail:</label> <!-- kopje waar men hun email kan invullen -->
-                        <input type="text" name="email" id="mailadres" value="<?php echo $email;?>">
-                        <span class="error"><?php echo $emailErr; ?></span><br>
-                    <label class="NAW" for="telephone">Telefoonnummer:</label> <!-- kopje waar men hun Telefoonnummer kan invullen -->
-                        <input type="text" name="telefoon" id="telefoonnummer" value="<?php echo $telefoon;?>">
-                        <span class="error"><?php echo $telefoonErr; ?></span><br><br><br>   
-                
-                              
-                    <label for="contact">Hoe wilt u gecontacteerd worden:</label> <!-- In de opdracht stond communicatievoorkeur, maar ik vond dit wat netter staan -->
-                    <span class="error"><?php echo $favcontactErr; ?></span>
-                    <br>
-                    <br>
-                <?php
-                    foreach(CONTACT_OPTIONS as $key => $contact)
-                    {
-                    echo "<input type='radio' name='favcontact' value='$key' " . ($favcontact == $key ? "checked" : "") ." >". // de radio buttons met opties telefoon nummer & email
-                        "<label for='$key'>$contact</label><br>"; 
-                    }
-                ?>    
-                <br>
-                <br>
-                    <label for="comment">Beschrijf in het kort waar u contact over wilt opnemen:</label> <!-- textarea waar men kort en bondig kan opschrijven waarover ze contact willen hebben -->
-                <br>
-                <br>
-                    <textarea name="comment" rows="10" cols="50" maxlength="250" ><?php echo $comment;?></textarea><br> <!-- ik heb gelijkt een maximum aantal characters toegevoegd zodat er geen gigantische verhalen verstuurd worden -->
-                        <span class="error"><?php echo $commentErr; ?></span>
+        function showContactForm() { /* contact form */
+            if (!$valid) {
+                     echo  "<form  method='post' action='contact.php'>
+                        <label for='title'>Aanhef:</label>
+                        <select name='title'>
+                        <option value=''>Selecteer een optie</option>";
                         
-                <br>
-                        <input type="submit" name="versturen" value="Versturen">
-                </form>
-    
-        <?php     
-                     
-          
+                               foreach(TITLE_OPTIONS as $key => $label)
+                                {
+                                echo "<option value='$key' " . ($title == $key ? 'selected' : '') . ">$label</option>";
+                                }
+                                echo "</select>
+                                        <span class='error'>$titleErr</span><br>
+                                <label class='NAW' for='name'>Naam:</label>
+                                    <input type='text' name='name' id='name' value='$name'>
+                                        <span class='error'>'$nameErr'</span><br>
+                                <label class='NAW' for='email'>E-mail:</label>
+                                    <input type='text' name='email' id='mailadres' value='$email'>
+                                        <span class='error'>$emailErr</span><br>
+                                <label class='NAW' for='telephone'>Telefoonnummer:</label>
+                                    <input type='text' name='telefoon' id='telefoonnummer' value='$telefoon'>
+                                        <span class='error'>$telefoonErr</span><br><br><br>
+                                <label for='contact'>Hoe wilt u gecontacteerd worden:</label>
+                                        <span class='error'>$favcontactErr</span><br><br>";
+                  
                 
-                
-                 } else { 
+                                foreach(CONTACT_OPTIONS as $key => $contact)
+                                {
+                                echo "<input type='radio' name='favcontact' value='$key' " . ($favcontact == $key ? 'checked' : '') . ">
+                                <label for='$key'>$contact</label><br><br><br>"; 
+                                } 
+                                 "<label for='comment'>Beschrijf in het kort waar u contact over wilt opnemen:</label><br><br>";
+                                echo "<textarea name='comment' rows='10' cols='50' maxlength='250' >$comment</textarea><br>";
+                                echo "<span class='error'>$commentErr</span><br>"; 
+                                echo "<input type='submit' name='versturen' value='Versturen'>
+                                </form>";
+                            } else  
+        {
                 echo '<p>Bedankt voor uw bericht, <?php echo $name; ?>.<br>
                             Wij zullen spoedig contact opnemen <?php echo $favcontact ?>.<br>
                             <br>
                             Uw gegevens zijn als volgt:<br>
                     </p>';
-                 }
                 echo $title. ' '; 
-                echo $name; ?><br>
-                <?php
-                echo $email; ?><br>
-                <?php
-                echo $telefoon;
-                ?>
-                 
-    echo '</div>';
-    */
+                echo $name;"<br>";
+                echo $email;"<br>";
+                echo $telefoon;               
+        }
+    }
+    
+         
+?>    
