@@ -117,7 +117,6 @@
                         case 'contact':
                             require_once('contact.php');
                             showContactContent();
-                            showContactForm();
                             break;
                         default:
                         echo "ERROR, Page not found";  

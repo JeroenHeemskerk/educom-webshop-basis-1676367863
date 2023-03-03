@@ -11,18 +11,25 @@
         {
             echo '<div class="content">
             <h2>Contact opnemen?</h2>';
+            $data = validateContact();
+            if ($data['valid']) {
+                showContactThanks($data);
+            } else { showContactForm($data);
+            }
         }
-   
-    
+        
+        
 define('TITLE_OPTIONS', array("dhr" => 'Dhr', "mvr" =>  'Mvr', "OTHER" => 'Anders')); 
 define('CONTACT_OPTIONS', array("telefoon" => 'per Telefoon', "mail" => 'per E-mail'));
+
+function validateContact()
+        {
 
 $titleErr = $nameErr = $emailErr = $telefoonErr = $favcontactErr = $commentErr = "";
 $title = $name = $email = $telefoon = $favcontact = $comment = "";
 $valid = false; // declaring variables
 
-function validateContact()
-{
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {  //set conditions
     if  (($title) == "") {
@@ -81,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {  //set conditions
     return array("title" => $title, "name" => $name, "email" => $email, "telefoon" => $telefoon,
     "favcontact" => $favcontact, "comment" => $comment, "titleErr" => $titleErr,
     "nameErr" => $nameErr, "emailErr" => $emailErr, "telefoonErr" => $telefoonErr,
-    "favcontactErr" => $favcontactErr, "valid" => $valid);
+    "favcontactErr" => $favcontactErr,"commentErr" => $commentErr, "valid" => $valid);
 }
     function test_input($data) {
         $data = trim($data);
@@ -91,55 +98,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {  //set conditions
       
     
 
-        function showContactForm() { /* contact form */
-            if (!$valid) {
-                     echo  "<form  method='post' action='contact.php'>
+        function showContactForm($data) { /* contact form */
+            
+                     echo  "<form  method='post' action='index.php'>
                         <label for='title'>Aanhef:</label>
                         <select name='title'>
                         <option value=''>Selecteer een optie</option>";
                         
                                foreach(TITLE_OPTIONS as $key => $label)
                                 {
-                                echo "<option value='$key' " . ($title == $key ? 'selected' : '') . ">$label</option>";
+                                echo "<option value='$key' " . ($data['title'] == $key ? 'selected' : '') . ">$label</option>";
                                 }
                                 echo "</select>
-                                        <span class='error'>$titleErr</span><br>
+                                        <span class='error'>" . $data['titleErr'] . "</span><br>
                                 <label class='NAW' for='name'>Naam:</label>
-                                    <input type='text' name='name' id='name' value='$name'>
-                                        <span class='error'>'$nameErr'</span><br>
+                                    <input type='text' name='name' id='name' value='" . $data['name'] . "'>
+                                        <span class='error'>" . $data['nameErr'] . "</span><br>
                                 <label class='NAW' for='email'>E-mail:</label>
-                                    <input type='text' name='email' id='mailadres' value='$email'>
-                                        <span class='error'>$emailErr</span><br>
+                                    <input type='text' name='email' id='mailadres' value='" . $data['email'] . "'>
+                                        <span class='error'>" . $data['emailErr'] . "</span><br>
                                 <label class='NAW' for='telephone'>Telefoonnummer:</label>
-                                    <input type='text' name='telefoon' id='telefoonnummer' value='$telefoon'>
-                                        <span class='error'>$telefoonErr</span><br><br><br>
+                                    <input type='text' name='telefoon' id='telefoonnummer' value='" .$data['telefoon'] . "'>
+                                        <span class='error'>" . $data['telefoonErr'] . "</span><br><br><br>
                                 <label for='contact'>Hoe wilt u gecontacteerd worden:</label>
-                                        <span class='error'>$favcontactErr</span><br><br>";
+                                        <span class='error'>" . $data['favconactErr'] . "</span><br><br>";
                   
                 
                                 foreach(CONTACT_OPTIONS as $key => $contact)
                                 {
-                                echo "<input type='radio' name='favcontact' value='$key' " . ($favcontact == $key ? 'checked' : '') . ">
+                                echo "<input type='radio' name='favcontact' value='$key' " . ($data['favcontact'] == $key ? 'checked' : '') . ">
                                 <label for='$key'>$contact</label><br><br><br>"; 
                                 } 
                                  "<label for='comment'>Beschrijf in het kort waar u contact over wilt opnemen:</label><br><br>";
-                                echo "<textarea name='comment' rows='10' cols='50' maxlength='250' >$comment</textarea><br>";
-                                echo "<span class='error'>$commentErr</span><br>"; 
+                                echo "<textarea name='comment' rows='10' cols='50' maxlength='250' >" . $data['comment'] . "</textarea><br>";
+                                echo "<span class='error'>" . $data['commentErr'] . "</span><br>"; 
+                                echo "<input name='page' value='contact' type='hidden'>";
                                 echo "<input type='submit' name='versturen' value='Versturen'>
                                 </form>";
-                            } else  
-        {
+                            }
+                
+        function showContactThanks($data) {       
                 echo '<p>Bedankt voor uw bericht, <?php echo $name; ?>.<br>
                             Wij zullen spoedig contact opnemen <?php echo $favcontact ?>.<br>
                             <br>
                             Uw gegevens zijn als volgt:<br>
                     </p>';
-                echo $title. ' '; 
-                echo $name;"<br>";
-                echo $email;"<br>";
-                echo $telefoon;               
+                echo $data['tite']; 
+                echo $data['name']."<br>";
+                echo $data['email']."<br>";
+                echo $data['telefoon'];              
         }
-    }
+    
     
          
 ?>    
