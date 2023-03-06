@@ -56,6 +56,10 @@
                     require_once('contact.php');
                     showContactHead();
                 break;
+                case 'register' :
+                    require_once('register.php');
+                    showRegisterHead();
+                break;
             }
         echo '</title></head>' ;   
     }
@@ -86,16 +90,24 @@
                     require_once('contact.php');
                     showContactHeader();
                 break;  
-            }     
+                case 'register' :
+                    require_once('register.php');
+                    ShowRegisterHeader();
+                break;
+            }      
     }
-      
+
+          
+    
     function showMenu()
-    {
-        echo    '<ul id="menu">
-                    <li><a href="http://localhost/educom-webshop-basis/index.php?page=home">Home</a></li>
-                    <li><a href="http://localhost/educom-webshop-basis/index.php?page=about">About</a></li>
-                    <li><a href="http://localhost/educom-webshop-basis/index.php?page=contact">Contact</a></li>
-                </ul>';
+    { 
+        define('MENU_OPTIONS', array("home" => "Home", "about" => "About", "contact" => "Contact", "register" => "Register"));
+        echo    '<ul id="menu">';
+
+        foreach(MENU_OPTIONS as $key2 => $MenuOptions) {
+                echo '<li><a href="http://localhost/educom-webshop-basis/index.php?page=' . $key2 . '">' . $MenuOptions. '</a></li>';
+        }
+        echo '</ul>';
     }
     
     function showContent($page) 
@@ -114,9 +126,12 @@
                     require_once('contact.php');
                     showContactContent();
                     break;
+                case 'register' :
+                    require_once('register.php');
+                    showRegisterContent();
                 default:
                 echo "ERROR, Page not found";  
-                }     
+            }     
     }
 
     function showFooter()
