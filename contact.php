@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {  //set conditions
                 <input type='text' name='telefoon' id='telefoonnummer' value='" .$data['telefoon'] . "'>
                     <span class='error'>" . $data['telefoonErr'] . "</span><br><br><br>
             <label for='contact'>Hoe wilt u gecontacteerd worden:</label>
-                <span class='error'>" . $data['favconactErr'] . "</span><br><br>";
+                <span class='error'>" . $data['favcontactErr'] . "</span><br><br>";
             
         foreach(CONTACT_OPTIONS as $key => $contactoptions)
         {
