@@ -62,7 +62,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="17" value="Switch" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="348" y="240" width="542" height="50" as="geometry"/>
+                    <mxGeometry x="348" y="240" width="652" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="34" value="ShowContactform" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="530" y="330" width="160" height="30" as="geometry"/>
@@ -334,22 +334,246 @@
                     <mxGeometry x="450" y="330" width="80" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="216" value="Login" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="690" y="290" width="110" height="40" as="geometry"/>
+                    <mxGeometry x="689.5" y="290" width="100.5" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="217" value="Register" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="790" y="290" width="100" height="40" as="geometry"/>
+                    <mxGeometry x="900" y="290" width="100" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="218" value="showLogin" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="692" y="330" width="98" height="30" as="geometry"/>
+                    <mxGeometry x="691.5" y="330" width="98" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="219" value="showRegister" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="788" y="330" width="100" height="30" as="geometry"/>
+                    <mxGeometry x="900" y="330" width="100" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="220" value="validateLogin" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="690" y="360" width="98" height="40" as="geometry"/>
+                <mxCell id="220" value="showLoginForm" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="800" y="600" width="280" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="221" value="validateLogin" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="789" y="360" width="98" height="40" as="geometry"/>
+                <mxCell id="221" value="ShowRegisterForm" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="320" width="370" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="222" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="218" target="220">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="880" y="440" as="sourcePoint"/>
+                        <mxPoint x="930" y="390" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="223" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="219" target="221">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="880" y="440" as="sourcePoint"/>
+                        <mxPoint x="1120" y="340" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="224" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="800" y="640" width="280" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="225" value="Username in database?&lt;br&gt;&lt;br&gt;" style="triangle;whiteSpace=wrap;html=1;direction=south;" vertex="1" parent="1">
+                    <mxGeometry x="800" y="640" width="280" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="226" value="true" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="810" y="690" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="227" value="false" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1010" y="690" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="228" value="" style="rounded=0;whiteSpace=wrap;html=1;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="840" y="630" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="229" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="800" y="720" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="230" value="showErr &quot;Username not found&quot;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="940" y="720" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="238" value="Logout" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="790" y="290" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="239" value="Show Home page&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="789" y="330" width="111" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="240" value="ValidateRegister" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="360" width="370" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="254" value="" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=default;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="400" width="370" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="255" value="Valideer e-mail adres" style="triangle;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=12;direction=south;spacingTop=-59;" vertex="1" parent="1">
+                    <mxGeometry x="1164" y="400" width="366" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="256" value="Veld ingevuld" style="text;align=center;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBorderColor=none;fontSize=12;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1165" y="480" width="98" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="257" value="Veld leeg" style="text;align=center;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBorderColor=none;fontSize=12;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1413" y="480" width="113" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="258" value="" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="530" width="185" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="259" value="show mailErr 'vul uw email in'" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="1345" y="530" width="185" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="260" value="conditie:&lt;br&gt;geldig email&lt;br&gt;&lt;br&gt;" style="triangle;whiteSpace=wrap;html=1;direction=south;" vertex="1" parent="1">
+                    <mxGeometry x="1165" y="530" width="176" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="261" value="" style="endArrow=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="258" target="258">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1331" y="540" as="sourcePoint"/>
+                        <mxPoint x="1381" y="490" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="262" value="True" style="text;align=center;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="560" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="263" value="False" style="text;align=center;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1285" y="560" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="264" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="258">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1251" y="590" as="sourcePoint"/>
+                        <mxPoint x="1251" y="630" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="265" value="showemailErr&lt;br&gt;Vul geldig emailadres in" style="text;align=center;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1266.5" y="610" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="266" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" target="268">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1345.3125" y="650" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="267" value="" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="650" width="370" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="268" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Controleer of veld&lt;/font&gt;&amp;nbsp;'Naam' niet leeg is&amp;nbsp;&lt;br&gt;" style="triangle;whiteSpace=wrap;html=1;labelBorderColor=none;direction=south;spacingTop=-57;" vertex="1" parent="1">
+                    <mxGeometry x="1165" y="650" width="360" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="269" value="Indien&amp;nbsp; het veld niet leeg is" style="text;align=center;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBorderColor=none;fontSize=12;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1193" y="707.5" width="72" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="270" value="Indien veld leeg is" style="text;align=center;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBorderColor=none;fontSize=12;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1425" y="700" width="80" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="271" value="set Name value" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="750" width="186" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="272" value="showNameErr 'Vul uw naam in'" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1345" y="750" width="185" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="273" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="800" y="760" width="280" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="274" value="does the password&lt;br&gt;match the database&lt;br&gt;&lt;br&gt;" style="triangle;whiteSpace=wrap;html=1;direction=south;" vertex="1" parent="1">
+                    <mxGeometry x="800" y="760" width="280" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="275" value="True" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="808" y="800" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="276" value="False" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1010" y="800" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="277" value="Show Home page&lt;br&gt;With logged in Account" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="800" y="840" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="278" value="ShowErr &quot;invalid password&quot;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="940" y="840" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="279" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="810" width="370" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="280" value="Veld Wachtwoord ingevuld&lt;br&gt;&lt;br&gt;" style="triangle;whiteSpace=wrap;html=1;direction=south;" vertex="1" parent="1">
+                    <mxGeometry x="1166" y="810" width="364" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="281" value="True" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1174" y="850" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="282" value="False" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1460" y="850" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="283" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="890" width="190" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="284" value="ShowErr &quot;vul uw wachtwoord in&quot;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1346" y="890" width="184" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="291" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="930" width="370" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="292" value="Tweede keer wachtwoord in gevuld&lt;br&gt;&lt;br&gt;&lt;br&gt;" style="triangle;whiteSpace=wrap;html=1;direction=south;" vertex="1" parent="1">
+                    <mxGeometry x="1166" y="930" width="364" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="293" value="True" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1174" y="970" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="294" value="False" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1460" y="970" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="295" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="1010" width="190" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="296" value="ShowErr &quot;Herhaal uw wachtwoord.&quot;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1350" y="1010" width="180" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="297" value="Is het gelijk aan &lt;br&gt;het eerste &lt;br&gt;wachtwoord?&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;" style="triangle;whiteSpace=wrap;html=1;direction=south;" vertex="1" parent="1">
+                    <mxGeometry x="1166" y="1010" width="184" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="298" value="True" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1166" y="1090" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="299" value="False" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1285" y="1090" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="300" value="Set email value&lt;br&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1174" y="600" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="301" value="set Password value" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="1120" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="302" value="ShowErr&lt;br&gt;'uw wachtwoorden matchen niet'&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1260" y="1120" width="90" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="303" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1350" y="1120" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="305" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="1180" width="370" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="306" value="Zijn alle ingevulde waarden&lt;br&gt;valid?" style="triangle;whiteSpace=wrap;html=1;direction=south;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="1180" width="370" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="308" value="True" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1180" y="1240" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="309" value="False" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1460" y="1240" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="310" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="1280" width="190" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="311" value="Laat het Form zien met errors&lt;br&gt;bij de incorrecte velden" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1350" y="1280" width="180" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="312" value="Controleer of het email adres al bestaat in de database&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;" style="triangle;whiteSpace=wrap;html=1;direction=south;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="1280" width="190" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="313" value="True" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="1330" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="314" value="False" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=0;" vertex="1" parent="1">
+                    <mxGeometry x="1286" y="1330" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="315" value="showErr&lt;br&gt;&quot;Dit emailadres&lt;br&gt;is al in gebruik&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="1360" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="316" value="Save data in&lt;br&gt;user.txt" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="1256" y="1360" width="94" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="319" value="-" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="1350" y="1360" width="180" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="320" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="1420" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="317" value="Show login page" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="1255" y="1420" width="95" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
