@@ -104,8 +104,8 @@
         define('MENU_OPTIONS', array("home" => "Home", "about" => "About", "contact" => "Contact", "register" => "Register"));
         echo    '<ul id="menu">';
 
-        foreach(MENU_OPTIONS as $key2 => $MenuOptions) {
-                echo '<li><a href="http://localhost/educom-webshop-basis/index.php?page=' . $key2 . '">' . $MenuOptions. '</a></li>';
+        foreach(MENU_OPTIONS as $key => $MenuOptions) {
+                echo '<li><a href="index.php?page=' . $key . '">' . $MenuOptions. '</a></li>';
         }
         echo '</ul>';
     }
@@ -129,6 +129,7 @@
                 case 'register' :
                     require_once('register.php');
                     showRegisterContent();
+                    break;
                 default:
                 echo "ERROR, Page not found";  
             }     
