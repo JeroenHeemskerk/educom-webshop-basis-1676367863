@@ -56,19 +56,22 @@ $valid = false; // declaring variables
         
         if ( $emailErr === "" && $nameErr === "" && $passwordErr === "" && $repeatpasswordErr === "" ) {
             $users_file = fopen("Users/users.txt", "r");
-            while (!feof($users_file)) {
-                $user = fgets($users_file);
-                if (stripos($user, $email) !== false) {
+            while (!feof($users_file)) { 
+                $row= fgets($users_file);
+                $parts = explode("|", $row);
+                if ($parts[0] == $email) {
                     $emailErr = "* Emailadres is al in gebruik";
-            }
+                }
             }
             fclose($users_file);
 
             if ($emailErr === "") {
             $valid = true; 
             
-            $user_file = fopen("Users/user.txt", "a");
-            
+            $users_file = fopen("Users/users.txt", "a");
+            $new_user = PHP_EOL ."$email|$name|$password";
+            fwrite($users_file, $new_user);
+            fclose($users_file);
             }
         }
     }
@@ -77,6 +80,13 @@ $valid = false; // declaring variables
                   "valid" => $valid);
 
 } 
+
+function debug_to_console($data) {
+    $output = $data;
+    if (is_array($output))
+        $output = implode(',', $output);
+    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+  }
     
     function test_input($data) {
         $data = trim($data);
