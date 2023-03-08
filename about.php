@@ -1,12 +1,12 @@
 <?php
     function showAboutHead()
-        {
-            echo "About";
-        }
-    function showAboutHeader()
-        {
-            echo "<h1>Over Mij</h1>";
-        }
+    {
+        echo "About";
+    }
+function showAboutHeader()
+    {
+        echo "<h1>Over Mij</h1>";
+    }
     function showAboutContent()
         {
             echo 	'<div class="content">

@@ -23,7 +23,7 @@ function showRegisterForm($data) /* register form */
 function showRegisterThanks($data)
 {
     echo 'Bedankt voor het registreren, ' . $data['name'] . '.';
-    echo 'U kunt nu inloggen.';
+    echo 'U kunt nu <a href="index.php?page=login">inloggen</a>.';
 
 }
 
