@@ -3,16 +3,16 @@
 function showRegisterForm($data) /* register form */
 {
     echo '<form method="post" action="index.php">
-    <label for="email">E-mail:</label>
+    <label for="email">E-mail:</label><br>
     <input type="text" name="email" value="' . $data["email"] . '"><br>
     <span class="error">' . $data["emailErr"] . '</span><br>
-    <label for="name">Naam:</label>
+    <label for="name">Naam:</label><br>
     <input type="text" name="name" value="' . $data["name"] . '"><br>
     <span class="error">' . $data["nameErr"] . '</span><br>
-    <label for="password">Wachtwoord:</label>
+    <label for="password">Wachtwoord:</label><br>
     <input type="password" name="password" value="' . $data["password"] . '"><br>
     <span class="error">' . $data["passwordErr"] . '</span><br>
-    <label for="repeatpassword">Herhaal Wachtwoord:</label>
+    <label for="repeatpassword">Herhaal Wachtwoord:</label><br>
     <input type="password" name="repeatpassword" value="' . $data["repeatpassword"] . '"><br>
     <span class="error">' . $data["repeatpasswordErr"] . '</span><br>';
     echo '<input name="page" value="register" type="hidden">';
@@ -22,8 +22,9 @@ function showRegisterForm($data) /* register form */
 
 function showRegisterThanks($data)
 {
-    echo 'Bedankt voor het registreren, ' . $data['name'] . '.';
-    echo 'U kunt nu <a href="index.php?page=login">inloggen</a>.';
+    echo 'Bedankt voor het registreren, ' . $data['name'] . ' .';
+    echo 'U kunt nu ';
+    echo '<a href="index.php?page=login" class="login">inloggen.</a>';
 
 }
 
@@ -76,6 +77,13 @@ function showContactThanks($data) //Showing a Thank you for filling in the form 
     echo $data['telefoon'];              
 }
 
+function showLoginForm($data) {
+    echo    '<label for="loginemail">E-mail</label><br>
+                <input type="text" name="useremail"><br>
+            <label for="loginpass">Wachtwoord</label><br>
+                <input type="text" name="userpassword">';
+
+}
 function test_input($data) {
     $data = trim($data);
     $data = htmlspecialchars($data);

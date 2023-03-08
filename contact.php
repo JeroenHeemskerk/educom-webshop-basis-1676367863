@@ -9,8 +9,7 @@
         }
     function showContactContent($data) 
         {
-            echo '<div class="content">
-            <h2>Contact opnemen?</h2>';
+            echo '<h2>Contact opnemen?</h2>';
             showContactForm($data);          
         }
         

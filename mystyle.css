@@ -41,6 +41,10 @@
 					color:white;
 					text-decoration: none;
 				}
+				a.login {
+					color: rgb(60, 60, 60);
+					text-decoration: underline;
+				}
 				footer { /* voor de positie en grootte copyright */
 				position: fixed;
 				right:0;
@@ -56,6 +60,10 @@
 				input[type="text"] { /* om de breedte van de input velden aan te passen */
 					width:400px;
 				}
+				input[type="password"] {
+					width:400px;
+				}
+
 				textarea { /* om de breedte van de textarea aan te passen */
 					width:400px;
 				}

@@ -11,15 +11,15 @@
             case 'contact':
                 $data = validateContact();
                 if ($data['valid']) { $page = 'thanks'; }
-                //     showContactThanks($data);
+                // showContactThanks($data); }
                 // } else { 
                 //     showContactForm($data);
                 // }
                 break;
             case 'register' :
                 $data = validateRegister();
-                if ($data['valid']) { $page = 'home'; }
-                //     showRegisterThanks($data);
+                if ($data['valid']) { $page = 'registerthanks'; }
+                //  showRegisterThanks($data);
                 // } else {
                 //     showRegisterForm($data);
                 // }
@@ -88,6 +88,10 @@
                     require_once('register.php');
                     showRegisterHead();
                 break;
+                case 'login' :
+                    require_once('login.php');
+                    showLoginHead();
+                    break;
             }
         echo '</title></head>' ;   
     }
@@ -108,21 +112,26 @@
             { 
                 case 'home':
                 require_once('home.php');
-                showHomeHeader();
-                break;
+                    showHomeHeader();
+                    break;
                 case 'about':
                     require_once('about.php');
                     showAboutHeader();
-                break;
+                    break;
                 case 'contact':
                 case 'thanks' :
                     require_once('contact.php');
                     showContactHeader();
-                break;  
+                    break;  
                 case 'register' :
+                case 'registerthanks' :
                     require_once('register.php');
-                    ShowRegisterHeader();
-                break;
+                    showRegisterHeader();
+                    break;
+                case 'login' :
+                    require_once('login.php');
+                    showLoginHeader();
+                    break;
             }      
     }
 
@@ -130,7 +139,7 @@
     
     function showMenu()
     { 
-        define('MENU_OPTIONS', array("home" => "Home", "about" => "About", "contact" => "Contact", "register" => "Register"));
+        define('MENU_OPTIONS', array("home" => "Home", "about" => "About", "contact" => "Contact", "register" => "Register", "login" => "Log in"));
         echo    '<ul id="menu">';
 
         foreach(MENU_OPTIONS as $key => $MenuOptions) {
@@ -141,6 +150,7 @@
     
     function showContent($data) 
     {
+        echo 	'<div class="content">';
         switch($data['page']) 
             { 
                 case 'home':
@@ -161,7 +171,15 @@
                     break;
                 case 'thanks' :
                     require_once('forms.php');
-                    ShowContactThanks($data);
+                    showContactThanks($data);
+                    break;
+                case 'registerthanks' :
+                    require_once('forms.php');
+                    showRegisterThanks($data);
+                    break;
+                case 'login' :
+                    require_once ('login.php');
+                    showLoginContent($data);
                     break;
                 default:
                 echo "ERROR, Page not found"; 
