@@ -1,3 +1,132 @@
 <?php
 
+ function validateRegister() /* validating register form */
+ {
+     
+$nameErr = $emailErr = $passwordErr = $repeatpasswordErr = "";
+$name = $email = $password = $repeatpassword = "";
+$valid = false; // declaring variables
+
+     if ($_SERVER['REQUEST_METHOD'] == "POST") {
+         if (empty(getPostVar('email'))) {
+         $emailErr ="* Vul een mailadres in";
+     } else {
+         $email=test_input(getPostVar('email')); 
+     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+         $emailErr="* Vul een geldig emailadres in";
+     }
+     }
+     
+     if (empty(getPostVar('name'))) { 
+         $nameErr="* Vul uw naam in";
+     } else { 
+         $name=test_input(getPostVar("name"));
+     }
+     if (empty(getPostVar('password'))) {
+         $passwordErr="* Vul uw wachtwoord in";
+         } else {
+         $password=test_input(getPostVar("password"));     
+         } 
+     if (empty(getPostVar('repeatpassword'))) {
+         $repeatpasswordErr="* Herhaal uw wachtwoord";
+     } else { $repeatpassword=test_input(getPostVar("repeatpassword"));
+         if (getPostVar('repeatpassword') !== (getPostVar('password'))) {
+             $repeatpasswordErr ="* Uw wachtwoorden zijn niet gelijk";
+         }
+     }
+     
+     if ( $emailErr === "" && $nameErr === "" && $passwordErr === "" && $repeatpasswordErr === "" ) {
+         $users_file = fopen("Users/users.txt", "r");
+         while (!feof($users_file)) { 
+             $row= fgets($users_file);
+             $parts = explode("|", $row);
+             if ($parts[0] == $email) {
+                 $emailErr = "* Emailadres is al in gebruik";
+             }
+         }
+         fclose($users_file);
+
+         if ($emailErr === "") {
+         $valid = true; 
+         
+         $users_file = fopen("Users/users.txt", "a");
+         $new_user = PHP_EOL ."$email|$name|$password";
+         fwrite($users_file, $new_user);
+         fclose($users_file);
+         }
+     }
+ }
+ return array("email" => $email, "name" => $name, "password" => $password, "repeatpassword" => $repeatpassword,
+              "emailErr" => $emailErr, "nameErr" => $nameErr, "passwordErr" => $passwordErr, "repeatpasswordErr" => $repeatpasswordErr,
+               "valid" => $valid);
+
+} 
+
+function validateContact()
+{
+
+$titleErr = $nameErr = $emailErr = $telefoonErr = $favcontactErr = $commentErr = "";
+$title = $name = $email = $telefoon = $favcontact = $comment = "";
+$valid = false; // declaring variables
+
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {  //set conditions
+if  ((getPostVar('title')) == "") {
+$titleErr="* Selecteer aanhef"; 
+} else {
+$title=test_input(getPostVar("title"));
+if (!array_key_exists($title, TITLE_OPTIONS)) {
+    $titleErr = "Onbekende aanhef.";
+}
+}
+if  (empty(getPostVar('name'))) {
+$nameErr="* Vul uw naam in";
+} else { 
+$name=test_input(getPostVar("name"));
+}
+
+
+if (empty(getPostVar('email'))) {
+$emailErr ="* Vul een mailadres in";
+} else { 
+$email=test_input(getPostVar("email"));
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $emailErr="* Vul een geldig emailadres in";
+}
+}
+if (empty(getPostVar('telefoon'))) {
+$telefoonErr="* Vul uw telefoonnummer in";
+}
+else  { 
+$telefoon=test_input(getPostVar("telefoon")); 
+} 
+
+if (empty(getPostVar('favcontact'))) {
+$favcontactErr="* Selecteer een contact optie";
+}   
+else { 
+$favcontact=test_input(getPostVar("favcontact"));
+if (!array_key_exists($favcontact, CONTACT_OPTIONS)) {
+    $favcontactErr = "Onbekende contactoptie";
+} 
+}
+
+if (empty(getPostVar('comment'))) {
+$commentErr="* Vul uw reden voor contact in";
+}
+else { 
+$comment=test_input(getPostVar("comment")); 
+}
+
+if ( $titleErr === "" && $nameErr === "" && $emailErr === "" && $telefoonErr === "" && $favcontactErr === "" &&  $commentErr === "" ) {
+$valid = true; }
+
+}
+return array("title" => $title, "name" => $name, "email" => $email, "telefoon" => $telefoon,
+"favcontact" => $favcontact, "comment" => $comment, "titleErr" => $titleErr,
+"nameErr" => $nameErr, "emailErr" => $emailErr, "telefoonErr" => $telefoonErr,
+"favcontactErr" => $favcontactErr,"commentErr" => $commentErr, "valid" => $valid);
+}
+
 ?>

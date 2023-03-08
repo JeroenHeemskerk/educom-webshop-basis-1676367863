@@ -1,7 +1,34 @@
 <?php
-    
+    require_once('forms.php');
+    require_once('validations.php');
+
     $page = getRequestedPage();
-    showResponsePage($page);
+    $data = processRequest($page);
+    showResponsePage($data);
+
+    function processRequest($page) {
+        switch($page) {
+            case 'contact':
+                $data = validateContact();
+                if ($data['valid']) { 
+                    showContactThanks($data);
+                } else { 
+                    showContactForm($data);
+                }
+                break;
+            case 'register' :
+                $data = validateRegister();
+                if ($data['valid']) {
+                    showRegisterThanks($data);
+                } else {
+                    showRegisterForm($data);
+                }
+                break;
+        }
+        $data['page'] = $page;
+        return $data;
+
+    }
 
     function getPostVar($key, $default = '') 
     {
@@ -21,11 +48,11 @@
         }
     }
         
-    function showResponsePage($page)
+    function showResponsePage($data)
     { 
         showDocumentstart(); 
-        showHeadSection($page);
-        showBodySection($page);
+        showHeadSection($data);
+        showBodySection($data);
         showDocumentEnd();
     }
     
@@ -37,10 +64,10 @@
     }
 
                 
-    function showHeadSection($page) 
+    function showHeadSection($data) 
     { 
         echo '<head><title>';  
-        switch($page) 
+        switch($data['page']) 
             {
                 case 'home' :
                     require_once('home.php');
@@ -64,19 +91,19 @@
         echo '</title></head>' ;   
     }
         
-    function showBodySection($page)
+    function showBodySection($data)
     {
                 echo '<body>';
-                showHeader($page);
+                showHeader($data);
                 showMenu();
-                showContent($page);
+                showContent($data);
                 showFooter();
                 echo '</body>';
     }
     
-    function showHeader($page) 
+    function showHeader($data) 
     {
-            switch($page) 
+            switch($data['page']) 
             { 
                 case 'home':
                 require_once('home.php');
@@ -110,9 +137,9 @@
         echo '</ul>';
     }
     
-    function showContent($page) 
+    function showContent($data) 
     {
-        switch($page) 
+        switch($data['page']) 
             { 
                 case 'home':
                     require_once('home.php');

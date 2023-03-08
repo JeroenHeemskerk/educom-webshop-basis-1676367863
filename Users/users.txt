@@ -2,3 +2,4 @@
 coach@man-kind.nl|Geert Weggemans|halt!
 test@account.nl|tester1|1234
 test3@account.nl|tester4|123
+test4@account.nl|test4|1234
