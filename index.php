@@ -10,19 +10,19 @@
         switch($page) {
             case 'contact':
                 $data = validateContact();
-                if ($data['valid']) { 
-                    showContactThanks($data);
-                } else { 
-                    showContactForm($data);
-                }
+                if ($data['valid']) { $page = 'thanks'; }
+                //     showContactThanks($data);
+                // } else { 
+                //     showContactForm($data);
+                // }
                 break;
             case 'register' :
                 $data = validateRegister();
-                if ($data['valid']) {
-                    showRegisterThanks($data);
-                } else {
-                    showRegisterForm($data);
-                }
+                if ($data['valid']) { $page = 'home'; }
+                //     showRegisterThanks($data);
+                // } else {
+                //     showRegisterForm($data);
+                // }
                 break;
         }
         $data['page'] = $page;
@@ -59,14 +59,15 @@
     function showDocumentStart()
     {
         echo   "<!DOCTYPE html>
-                <html lang='NL'>
-                <link rel='stylesheet' href='mystyle.css'>";
+                <html lang='NL'>";
+                
     }
 
                 
     function showHeadSection($data) 
     { 
-        echo '<head><title>';  
+        echo "<head><link rel='stylesheet' href='mystyle.css'>";
+        echo '<title>';  
         switch($data['page']) 
             {
                 case 'home' :
@@ -114,6 +115,7 @@
                     showAboutHeader();
                 break;
                 case 'contact':
+                case 'thanks' :
                     require_once('contact.php');
                     showContactHeader();
                 break;  
@@ -151,14 +153,19 @@
                     break;
                 case 'contact':
                     require_once('contact.php');
-                    showContactContent();
+                    showContactContent($data);
                     break;
                 case 'register' :
                     require_once('register.php');
-                    showRegisterContent();
+                    showRegisterContent($data);
+                    break;
+                case 'thanks' :
+                    require_once('forms.php');
+                    ShowContactThanks($data);
                     break;
                 default:
-                echo "ERROR, Page not found";  
+                echo "ERROR, Page not found"; 
+                echo "</div>"; 
             }     
     }
 
@@ -171,7 +178,6 @@
     
     function showDocumentEnd()
     {
-        echo "</div>
-        </html>";
+        echo "</html>";
     }
 ?>        

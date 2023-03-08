@@ -7,10 +7,11 @@
         {
             echo '<h1>Contact</h1>';
         }
-    function showContactContent() 
+    function showContactContent($data) 
         {
             echo '<div class="content">
-            <h2>Contact opnemen?</h2>';          
+            <h2>Contact opnemen?</h2>';
+            showContactForm($data);          
         }
         
         

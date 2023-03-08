@@ -28,10 +28,7 @@ function showRegisterThanks($data)
 }
 
 function showContactForm($data) /* contact form */
-{ 
-    define('TITLE_OPTIONS', array("dhr" => 'Dhr', "mvr" =>  'Mvr', "OTHER" => 'Anders')); 
-    define('CONTACT_OPTIONS', array("telefoon" => 'per Telefoon', "mail" => 'per E-mail'));
-                 
+{                  
     echo  "<form  method='post' action='index.php'>
             <label for='title'>Aanhef:</label>
                 <select name='title'>
