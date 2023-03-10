@@ -36,24 +36,11 @@ $valid = false; // declaring variables
      }
      
      if ( $emailErr === "" && $nameErr === "" && $passwordErr === "" && $repeatpasswordErr === "" ) {
-         $users_file = fopen("Users/users.txt", "r");
-         while (!feof($users_file)) { 
-             $row= fgets($users_file);
-             $parts = explode("|", $row);
-             if ($parts[0] == $email) {
-                 $emailErr = "* Emailadres is al in gebruik";
-             }
-         }
-         fclose($users_file);
-
-         if ($emailErr === "") {
-         $valid = true; 
-         
-         $users_file = fopen("Users/users.txt", "a");
-         $new_user = PHP_EOL ."$email|$name|$password";
-         fwrite($users_file, $new_user);
-         fclose($users_file);
-         }
+        if (empty(doesEmailExist($email))) {
+            $valid = true;
+        } else { 
+            $emailErr = "* Emailadres is al in gebruik";
+            }
      }
  }
  return array("email" => $email, "name" => $name, "password" => $password, "repeatpassword" => $repeatpassword,

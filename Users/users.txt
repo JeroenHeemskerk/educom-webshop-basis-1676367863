@@ -1,7 +1,4 @@
 [email]|[naam]|[wachtwoord]
 coach@man-kind.nl|Geert Weggemans|halt!
 test@account.nl|tester1|1234
-test3@account.nl|tester4|123
-test4@account.nl|test4|1234
-test5@account.nl|tester5|1234
-test6@account.nl|tester6|1234
+test2@account.nl|tester2|1234

@@ -1,15 +1,13 @@
 <?php
-    function showAboutHead()
-    {
-        echo "About";
-    }
+    $head = "About";
+    
 function showAboutHeader()
     {
-        echo "<h1>Over Mij</h1>";
+        echo "Over Mij";
     }
     function showAboutContent()
         {
-                '<h2>Wie ben ik?</h2><br>	
+            echo '<h2>Wie ben ik?</h2><br>	
                     <img src="https://scontent-ams2-1.xx.fbcdn.net/v/t1.18169-9/13495263_10201912623452503_4187846889634265710_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Wvnzsy_sgS4AX-bsZnA&_nc_ht=scontent-ams2-1.xx&oh=00_AfBjF67bWEkG6PDAM_D6e3sz_67s5plYAnahBr6Qevw4sQ&oe=6416AE84" alt="Foto van Ruben">
             
             

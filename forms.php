@@ -20,14 +20,6 @@ function showRegisterForm($data) /* register form */
     echo '</form>'; // end of form
 }
 
-function showRegisterThanks($data)
-{
-    echo 'Bedankt voor het registreren, ' . $data['name'] . ' .';
-    echo 'U kunt nu ';
-    echo '<a href="index.php?page=login" class="login">inloggen.</a>';
-
-}
-
 function showContactForm($data) /* contact form */
 {                  
     echo  "<form  method='post' action='index.php'>
@@ -63,27 +55,18 @@ function showContactForm($data) /* contact form */
         echo "<input name='page' value='contact' type='hidden'>";
         echo "<input type='submit' name='versturen' value='Versturen'></form>";
 }
-            
-function showContactThanks($data) //Showing a Thank you for filling in the form correctly.
-{       
-    echo "<p>Bedankt voor uw bericht, " . $data['name'] . ".<br>
-            Wij zullen spoedig contact opnemen" . $data['favcontact'] . ".<br>
-            <br>
-            Uw gegevens zijn als volgt:<br>
-            </p>";
-    echo $data['title']." ";
-    echo $data['name']."<br>";
-    echo $data['email']."<br>";
-    echo $data['telefoon'];              
-}
 
 function showLoginForm($data) {
-    echo    '<label for="loginemail">E-mail</label><br>
+    echo    '<form method="post" action="home.php">
+            <label for="loginemail">E-mail</label><br>
                 <input type="text" name="useremail"><br>
             <label for="loginpass">Wachtwoord</label><br>
-                <input type="text" name="userpassword">';
-
+                <input type="text" name="userpassword">
+                <br>
+                <input name="page" type="hidden" value="login">
+                <input type="submit" name="login" value="Inloggen">';
 }
+
 function test_input($data) {
     $data = trim($data);
     $data = htmlspecialchars($data);

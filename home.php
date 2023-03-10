@@ -1,7 +1,12 @@
 <?php
-    $head = "Home";
-    $header = "<h1>Home</h1>";
-    
+
+  $head = "Home";
+  
+  function showHomeHeader()
+  {
+    echo "Home";
+  }
+
   function showHomeContent()	
     {		
         echo '<div class="content">	
