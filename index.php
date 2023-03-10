@@ -16,7 +16,9 @@
                 break;
             case 'register' :
                 $data = validateRegister();
-                if ($data['valid']) { $page = 'register'; }
+                if ($data['valid']) {
+                    storeUser($data['email'], $data['name'], $data['password']);    
+                    $page = 'login'; }
                 break;
         }
         $data['page'] = $page;

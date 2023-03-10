@@ -2,7 +2,7 @@
     function doesEmailExist($email) {
         $user = findUserByEmail($email);
         if (empty($user)) {
-            return FALSE;
+        return FALSE;
         } else {
         return TRUE;
         }
