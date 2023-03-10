@@ -12,15 +12,25 @@
         switch($page) {
             case 'contact':
                 $data = validateContact();
-                if ($data['valid']) { $page = 'thanks'; }
+                if ($data['valid']) {
+                    $page = 'thanks'; 
+                }
                 break;
             case 'register' :
                 $data = validateRegister();
                 if ($data['valid']) {
                     storeUser($data['email'], $data['name'], $data['password']);    
-                    $page = 'login'; }
+                    $page = 'login'; 
+                }
                 break;
-        }
+            case 'login' : 
+                $data = validateLogin();
+                if ($data['valid']) { 
+                    $page = 'home';
+                }
+                break;
+            }
+        
         $data['page'] = $page;
         return $data;
 

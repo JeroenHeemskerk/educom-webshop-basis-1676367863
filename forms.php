@@ -57,12 +57,13 @@ function showContactForm($data) /* contact form */
 }
 
 function showLoginForm($data) {
-    echo    '<form method="post" action="home.php">
-            <label for="loginemail">E-mail</label><br>
-                <input type="text" name="useremail"><br>
+    echo    '<form method="post" action="index.php">
+            <label for="email">E-mail</label><br>
+                <input type="text" name="email" value="' . $data["email"] . '"><br>
+                <span class="error">' . $data["emailErr"] . '<br></span>
             <label for="loginpass">Wachtwoord</label><br>
-                <input type="text" name="userpassword">
-                <br>
+                <input type="password" name="password"><br>
+                <span class="error">' . $data["passwordErr"] . '<br></span>
                 <input name="page" type="hidden" value="login">
                 <input type="submit" name="login" value="Inloggen">';
 }

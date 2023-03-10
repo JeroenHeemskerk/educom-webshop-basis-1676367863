@@ -120,4 +120,44 @@ return array("title" => $title, "name" => $name, "email" => $email, "telefoon" =
 "favcontactErr" => $favcontactErr,"commentErr" => $commentErr, "valid" => $valid);
 }
 
+function validateLogin() {
+    $emailErr = $passwordErr = "";
+    $email = $password = "";
+    $valid = false;
+    $name = "";
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {  //set login conditions
+        if  (empty(getPostVar("email"))) {
+            $emailErr="* Vul uw Emailadres in"; 
+        } else {
+            $email=test_input(getPostVar("email"));
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $emailErr="* Vul een geldig emailadres in";
+            }
+        }
+        if  (empty(getPostVar("password"))) {
+            $passwordErr="* Vul uw wachtwoord in";
+        } else { 
+            $password=test_input(getPostVar("password"));
+        }
+        if ($emailErr === "" && $passwordErr === "") {
+			$authenticate = authenticateUser($email, $password);
+			switch($authenticate['result']) {
+				case VALID_LOGIN:
+					$valid = true;
+					$name = $authenticate['user']['name'];
+					break;
+				case WRONG_PASSWORD:
+					$passwordErr = "Verkeerd wachtwoord.";
+					break;
+				case WRONG_EMAIL:
+					$emailErr = "Email is onbekend.";
+					break;
+            }
+        }
+    }
+    return array(
+        "valid" => $valid, "password" => $password, "passwordErr" => $passwordErr,
+        "email" => $email, "emailErr" => $emailErr, "name" => $name);
+}
 ?>
