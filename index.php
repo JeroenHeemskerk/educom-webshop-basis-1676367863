@@ -1,8 +1,12 @@
 <?php
+
+    session_start();
+
     require_once('forms.php');
     require_once('validations.php');
     require_once('user_service.php');
     require_once('file_repository.php');
+    require_once('sessions');
 
     $page = getRequestedPage();
     $data = processRequest($page);
@@ -25,9 +29,14 @@
                 break;
             case 'login' : 
                 $data = validateLogin();
-                if ($data['valid']) { 
+                if ($data['valid']) {
+                    loginUser($data['name']);
                     $page = 'home';
                 }
+                break;
+            case 'logout' :
+                logoutUser();
+                $page = 'home';
                 break;
             }
         
@@ -58,14 +67,14 @@
         showDocumentEnd();
     }
     
-    function showDocumentStart() {
+    function showDocumentStart() { // showing doc start
         echo   "<!DOCTYPE html>
                 <html lang='NL'>";
                 
     }
 
                 
-    function showHeadSection($data) { 
+    function showHeadSection($data) { // including the style sheet and the page titles
         echo "<head><link rel='stylesheet' href='mystyle.css'>";
         echo '<title>';  
         switch($data['page']) 
@@ -96,7 +105,7 @@
         echo '</title></head>' ;   
     }
         
-    function showBodySection($data) {
+    function showBodySection($data) { 
                 echo '<body>';
                 showHeader($data);
                 showMenu();
@@ -105,7 +114,7 @@
                 echo '</body>';
     }
     
-    function showHeader($data) {
+    function showHeader($data) { //showing the page title
         echo "<h1>";
         switch($data['page']) 
         { 
@@ -138,16 +147,22 @@
           
     
     function showMenu() { 
-        define('MENU_OPTIONS', array("home" => "Home", "about" => "About", "contact" => "Contact", "register" => "Register", "login" => "Log in"));
+        $Menu = array("home" => "Home", "about" => "Over Mij", "contact" => "Contact");
+        if(!isUserLoggedIn()) {
+            $Menu['register'] = "Registreer";
+            $Menu['login'] = "Log in";
+        } else {
+            $Menu['logout'] = "Log uit " .  getLoggedInUserName();
+        }        
         echo    '<ul id="menu">';
-
-        foreach(MENU_OPTIONS as $key => $MenuOptions) {
-                echo '<li><a href="index.php?page=' . $key . '">' . $MenuOptions. '</a></li>';
-        }
+        
+        foreach($Menu as $key => $MenuOptions) {
+            echo '<li><a href="index.php?page=' . $key . '">' . $MenuOptions. '</a></li>';
+        } 
         echo '</ul>';
     }
     
-    function showContent($data) {
+    function showContent($data) { //showing page content
         echo 	'<div class="content">';
         switch($data['page']) { 
             case 'home':
@@ -183,6 +198,7 @@
                 }     
         echo "</div>";
     }
+
     function showFooter() {
         echo '<footer>
             <div>&copy Created by R. van der Zouw 2023</div>
@@ -192,12 +208,5 @@
     function showDocumentEnd() {
         echo "</html>";
     }
-    // Debug tool, om variabelen makkelijk te kunnen checken
-function debug_to_console($data) {
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
-    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
-  }
 ?>        
                 

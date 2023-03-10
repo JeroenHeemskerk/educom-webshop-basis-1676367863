@@ -1,7 +1,7 @@
 <?php
 
-function showRegisterForm($data) /* register form */
-{
+function showRegisterForm($data) { /* register form */
+
     echo '<form method="post" action="index.php">
     <label for="email">E-mail:</label><br>
     <input type="text" name="email" value="' . $data["email"] . '"><br>
@@ -20,8 +20,8 @@ function showRegisterForm($data) /* register form */
     echo '</form>'; // end of form
 }
 
-function showContactForm($data) /* contact form */
-{                  
+function showContactForm($data) { /* contact form */
+                  
     echo  "<form  method='post' action='index.php'>
             <label for='title'>Aanhef:</label>
                 <select name='title'>
